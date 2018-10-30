@@ -43,6 +43,7 @@ public class ClientThread extends Thread {
     response.close();
     long endTime = System.currentTimeMillis();
     addToMeasure(startTime, endTime);
+//    System.out.println(1);
   }
 
   public void get(String path) {
@@ -69,7 +70,7 @@ public class ClientThread extends Thread {
   public void addToMeasure(long startTime, long endTime){
     int duration = (int)((endTime - measure.globalStartTime) / 1000);
     measure.throughput.put(duration, measure.throughput.getOrDefault(duration, 0) + 1);
-//    measure.latency.add(endTime - startTime);
+    measure.latency.add(endTime - startTime);
   }
 
 

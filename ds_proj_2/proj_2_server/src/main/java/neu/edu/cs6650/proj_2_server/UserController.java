@@ -31,7 +31,9 @@ public class UserController {
       user.setStepCount(step);
       try {
         users.save(user);
-      } catch (Exception e) {}
+      } catch (Exception e) {
+        throw new RuntimeException(e);
+      }
     }
 
     @GetMapping(value = "/current/{id}")
@@ -49,7 +51,7 @@ public class UserController {
       int count = 0;
       for(User user : list)
         count += user.getStepCount();
-      return  count;
+      return count;
     }
 
 
