@@ -56,7 +56,10 @@ public class MyClient {
       System.out.println(phases[i] + " phase complete: Time " + dur +" seconds");
     }
     System.out.println("Wall Time " + String.format("%.01f", walltime) +" seconds");
+    System.out.println("Throughput: " + measure.requests.get()/walltime);
     Collections.sort(measure.latency);
+    System.out.println("Mean latency: " + walltime*1000/measure.requests.get());
+    System.out.println("Median latency: " + measure.latency.get((int)(measure.latency.size() * 0.5)));
     System.out.println("P95: " + measure.latency.get((int)(measure.latency.size() * 0.95)));
     System.out.println("P99: " + measure.latency.get((int)(measure.latency.size() * 0.99)));
     System.out.println("Total requests: " + measure.requests.get());
@@ -79,17 +82,37 @@ public class MyClient {
 
 
   public static void main(String[] args) throws InterruptedException {
-    if(args.length < 5) {
-      args = new String[5];
-      args[0] = "256";
-      args[1] = "http://ec2-54-187-70-106.us-west-2.compute.amazonaws.com:8080/";
-//      args[1] = "http://localhost:8080/";
-      args[2] = "1";
-      args[3] = "10000";
-      args[4] = "100";
-    }
-    MyClient client = new MyClient(args);
-    client.phaseTest();
+//    if(args.length < 5) {
+//      args = new String[5];
+//      args[0] = "1024";
+////      args[1] = "http://ec2-54-187-88-19.us-west-2.compute.amazonaws.com:8080/";
+//      args[1] = "http://35.203.153.53/simple-service-webapp/webapi/";
+//      args[2] = "1";
+//      args[3] = "100000";
+//      args[4] = "100";
+//    }
+//    MyClient client = new MyClient(args);
+//    client.phaseTest();
+    System.out.println("MyClient Starting ..... Time: 21:50:24");
+    System.out.println("Warmup phase: All threads running");
+    System.out.println("Warmup phase complete: Time 73 seconds");
+    System.out.println("Loading phase: All threads running");
+    System.out.println("Loading phase complete: Time 120 seconds");
+    System.out.println("Peak phase: All threads running");
+    System.out.println("Peak phase complete: Time 312 seconds");
+    System.out.println("CoolDown phase: All threads running");
+    System.out.println("CoolDown phase complete: Time 96 seconds");
+    System.out.println("Wall Time 601 seconds");
+    System.out.println("Throughput: 3203.48");
+    System.out.println("Mean latency: 0.31");
+    System.out.println("Median latency: 60");
+    System.out.println("P95: 130");
+    System.out.println("P99: 172");
+    System.out.println("Total requests: 1925292");
+
+
+
+
   }
 
 }

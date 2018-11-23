@@ -38,7 +38,7 @@ public class ClientThread extends Thread {
     Invocation.Builder ib = webTarget.request();
     Response response  = ib.post(null);
 //    int status = response.getStatus();
-//    if(status == 200) System.out.println("+");
+//    if(status == 200)
     measure.requests.getAndIncrement();
     response.close();
     long endTime = System.currentTimeMillis();
@@ -52,9 +52,9 @@ public class ClientThread extends Thread {
     Invocation.Builder ib = webTarget.request();
     Response response = ib.get();
 //    int status = response.getStatus();
-//    if(status == 200) System.out.println("!");
-    response.close();
+//    if(status == 200)
     measure.requests.getAndIncrement();
+    response.close();
     long endTime = System.currentTimeMillis();
     addToMeasure(startTime, endTime);
   }
